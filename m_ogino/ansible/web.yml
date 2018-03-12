@@ -1,0 +1,14 @@
+- hosts: web
+  user: root
+  tasks:
+    - name: installation from yum
+      yum: name={{ item }} state=installed
+      with_items: 
+        - httpd
+    - name: copy_file
+      copy:
+        src=files/index.html
+        dest=/var/www/html/index.html
+
+
+
