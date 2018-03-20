@@ -1,0 +1,14 @@
+- name: installation from yum
+  yum: name={{ item }} state=installed
+    with_items:
+      - ruby
+      - gcc-c++
+      - ruby-devel 
+      - libxml2-devel 
+      - libxslt-devel
+
+- name: gem install
+  gem:
+    name: mysql
+    state: latest
+
