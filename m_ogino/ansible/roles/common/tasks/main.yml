@@ -1,0 +1,11 @@
+- name: SELinux-disabled
+  selinux:
+    policy: targeted
+    state: disabled
+
+- name: Firewalld-install
+  yum: name=firewalld state=present
+
+- name: Firewalld-enable
+  service: name=firewalld state=started enabled=yes
+
