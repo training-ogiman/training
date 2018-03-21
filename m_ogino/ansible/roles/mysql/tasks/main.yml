@@ -12,12 +12,12 @@
 - name: firewalld mariadb(mysql) allow DB port
   firewalld: permanent=True service=mysql state=enabled immediate=true
 
-- name: set root user
+- name: add user
   mysql_user:
-    name: root
-    host: localhost
-    password: ogiman
-  ignore_errors: True
+    login_user: root
+    login_password: 
+    name: ogiman
+    state: absent
 
 - name: /root/.my.cnf by template
   copy: 
@@ -30,5 +30,5 @@
     state: present
 
 - name: createtable
-  shell: mysql -u root -pogiman ogimandb -e "create table ogimantable (id int not null auto_increment,date datetime,name varchar(20),feel varchar(20),PRIMARY KEY(id) );"
+  shell: mysql -u ogiman -p ogimandb -e "create table ogimantable (id int not null auto_increment,date datetime,name varchar(20),feel varchar(20),PRIMARY KEY(id) );"
   ignore_errors: True
