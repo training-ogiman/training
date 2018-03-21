@@ -4,6 +4,7 @@
     - mariadb
     - mariadb-server
     - mysql-devel
+    - MySQL-python
 
 - name: mariadb start
   service: name=mariadb state=started enabled=yes
@@ -11,11 +12,16 @@
 - name: firewalld mariadb(mysql) allow DB port
   firewalld: permanent=True service=mysql state=enabled immediate=true
 
-- name: set root user
-  mysql_user:
-    name: root
-    host: localhost
-    password: ogiman
+#- name: set root user
+#  mysql_user:
+#    name: root
+#    host: localhost
+#    password: ogiman
+
+- name: /root/.my.cnf by template
+  copy: 
+    src=files/my.cnf 
+    dest=/root/.my.cnf
 
 - name: createdb
   mysql_db:
@@ -23,4 +29,5 @@
     state: present
 
 - name: createtable
-  shell: mysql -u root -p ogiman -h localhost $ogimandb -e "create table ogimantable (id int not null auto_increment,date datetime,name varchar(20),feel varchar(20),PRIMARY KEY(id) );"
+  shell: mysql -u root -pogiman ogimandb -e "create table ogimantable (id int not null auto_increment,date datetime,name varchar(20),feel varchar(20),PRIMARY KEY(id) );"
+  ignore_errors: True
