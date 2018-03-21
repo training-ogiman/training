@@ -1,0 +1,9 @@
+---
+- hosts: webapp
+  user: ec2-user
+  become: yes
+  roles:
+    - common
+    - httpd
+    - ruby
+    - mysql
