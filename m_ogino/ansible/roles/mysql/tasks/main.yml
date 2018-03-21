@@ -14,10 +14,10 @@
 
 - name: add user
   mysql_user:
-    login_user: root
-    login_password: 
-    name: ogiman
-    state: absent
+    login_user=root
+    login_password= 
+    name=ogiman
+    state=absent
 
 - name: /root/.my.cnf by template
   copy: 
