@@ -1,5 +1,11 @@
+- name: wget epel
+  shell: wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  /tmp
+
+- name: epel install
+  shell: rpm -ivh /tmp/epel*
+
 - name: installation from yum
-  yum: name={{ item }} state=installed
+  yum: name={{ item }} state=installed enablerepo=*
   with_items:
     - ruby
     - gcc-c++
