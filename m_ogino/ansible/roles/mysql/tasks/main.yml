@@ -17,7 +17,7 @@
     name: root
     host: localhost
     password: ogiman
-    ignore_errors: True
+  ignore_errors: True
 
 - name: /root/.my.cnf by template
   copy: 
