@@ -1,5 +1,5 @@
 - name: mariadb（mysql） install
-  yum: name="{{item}}" state=latest
+  yum: name="{{item}}" state=latest enablerepo=*
   with_items:
     - mariadb
     - mariadb-server
