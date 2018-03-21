@@ -1,5 +1,5 @@
 - name: wget epel
-  shell: wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  /tmp
+  shell: wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  -P /tmp
 
 - name: epel install
   shell: rpm -ivh /tmp/epel*
