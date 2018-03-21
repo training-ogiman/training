@@ -12,12 +12,6 @@
 - name: firewalld mariadb(mysql) allow DB port
   firewalld: permanent=True service=mysql state=enabled immediate=true
 
-#- name: set root user
-#  mysql_user:
-#    name: root
-#    host: localhost
-#    password: ogiman
-
 - name: /root/.my.cnf by template
   copy: 
     src=files/my.cnf 

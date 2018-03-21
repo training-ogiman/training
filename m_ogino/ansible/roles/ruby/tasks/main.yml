@@ -3,6 +3,7 @@
 
 - name: epel install
   shell: rpm -ivh /tmp/epel*
+  ignore_errors: True
 
 - name: installation from yum
   yum: name={{ item }} state=installed enablerepo=*
