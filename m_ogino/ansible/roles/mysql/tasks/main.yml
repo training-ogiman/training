@@ -19,15 +19,16 @@
     name=ogiman
     state=absent
 
-- name: /root/.my.cnf by template
-  copy: 
-    src=files/my.cnf 
-    dest=/root/.my.cnf
+#- name: /root/.my.cnf by template
+#  copy: 
+#    src=files/my.cnf 
+#    dest=/root/.my.cnf
 
 - name: createdb
   mysql_db:
-    name: ogimandb
-    state: present
+    login_user=ogiman
+    name=ogimandb
+    state=present
 
 - name: createtable
   shell: mysql -u ogiman -p ogimandb -e "create table ogimantable (id int not null auto_increment,date datetime,name varchar(20),feel varchar(20),PRIMARY KEY(id) );"
