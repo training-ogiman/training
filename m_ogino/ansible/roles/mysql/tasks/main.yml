@@ -27,11 +27,11 @@
 
 - name: createdb
   mysql_db:
-    login_user=ogiman
+    login_user=root
     login_password= 
     name=ogimandb
     state=present
 
 - name: createtable
-  shell: mysql -u ogiman -p ogimandb -e "create table ogimantable (id int not null auto_increment,date datetime,name varchar(20),feel varchar(20),PRIMARY KEY(id) );"
+  shell: mysql -u root -p ogimandb -e "create table ogimantable (id int not null auto_increment,date datetime,name varchar(20),feel varchar(20),PRIMARY KEY(id) );"
   ignore_errors: True
