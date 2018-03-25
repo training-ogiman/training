@@ -1,1 +1,2 @@
-this conflict is on purpose by ogino hehe
+git training
+conflict test
