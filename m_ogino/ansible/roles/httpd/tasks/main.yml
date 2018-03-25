@@ -1,0 +1,20 @@
+- name: firewalld allow 80 port
+  firewalld: permanent=True service=http state=enabled immediate=true
+
+- name: installation from yum
+  yum: name="{{item}}" state=installed
+  with_items:
+    - httpd
+
+- name: service start
+  service: name=httpd state=started enabled=yes
+
+- name: copy index.html
+  copy:
+    src=files/index.html
+    dest=/var/www/html/index.html
+
+- name: copy submit.cgi
+  copy:
+    src=files/submit.cgi
+    dest=/var/www/cgi-bin/submit.cgi

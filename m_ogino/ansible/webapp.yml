@@ -1,0 +1,9 @@
+---
+- hosts: webapp
+  user: root 
+  become: yes
+  roles:
+    - common
+    - mysql
+    - httpd
+    - ruby

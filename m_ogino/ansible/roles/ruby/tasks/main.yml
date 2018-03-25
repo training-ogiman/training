@@ -1,0 +1,21 @@
+- name: wget epel
+  shell: wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  -P /tmp
+
+- name: epel install
+  shell: rpm -ivh /tmp/epel*
+  ignore_errors: True
+
+- name: installation from yum
+  yum: name={{ item }} state=installed enablerepo=*
+  with_items:
+    - ruby
+    - gcc-c++
+    - ruby-devel 
+    - libxml2-devel 
+    - libxslt-devel
+
+- name: gem install
+  gem:
+    name: mysql
+    state: latest
+

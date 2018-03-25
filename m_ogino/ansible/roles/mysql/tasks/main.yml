@@ -1,0 +1,37 @@
+- name: mariadb（mysql） install
+  yum: name="{{item}}" state=latest enablerepo=*
+  with_items:
+    - mariadb
+    - mariadb-server
+    - mysql-devel
+    - MySQL-python
+
+- name: mariadb start
+  service: name=mariadb state=started enabled=yes
+
+- name: firewalld mariadb(mysql) allow DB port
+  firewalld: permanent=True service=mysql state=enabled immediate=true
+
+- name: add user
+  mysql_user:
+    login_user=root
+    login_password= 
+    name=ogiman
+    priv='*.*:ALL'
+    state=absent
+
+#- name: /root/.my.cnf by template
+#  copy: 
+#    src=files/my.cnf 
+#    dest=/root/.my.cnf
+
+- name: createdb
+  mysql_db:
+    login_user=root
+    login_password= 
+    name=ogimandb
+    state=present
+
+- name: createtable
+  shell: mysql -u root ogimandb -e "create table ogimantable (id int not null auto_increment,date datetime,name varchar(20),feel varchar(20),PRIMARY KEY(id) );"
+  ignore_errors: True
