@@ -1,2 +1,2 @@
 git training
-conflict test
+20180322
