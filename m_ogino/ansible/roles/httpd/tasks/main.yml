@@ -14,7 +14,12 @@
     src=files/index.html
     dest=/var/www/html/index.html
 
-- name: copy submit.cgi
+- name: copy index.html
   copy:
-    src=files/submit.cgi
-    dest=/var/www/cgi-bin/submit.cgi
+    src=files/373-pictogram-free.jpg
+    dest=/var/www/html/373-pictogram-free.jpg
+
+#- name: copy submit.cgi
+#  copy:
+#    src=files/submit.cgi
+#    dest=/var/www/cgi-bin/submit.cgi
